@@ -1,0 +1,19 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Home {% endblock %} 
+{% block titulopagina %} Resultado dos cálculos {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %} 
+{% endblock stylesheets %}
+
+{% block content %}
+    
+    <div class="container mt-3">
+        {% include 'calculo.html' %}
+    </div>
+
+{% endblock content %}
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}    
+{% endblock javascripts %}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="pt-br">
+    <head>
+        <title>
+            Calculadora - {% block title %}{% endblock %} | EliJunior.DEV
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        
+        <!--<title> Drop Down Sidebar Menu | CodingLab </title>-->
+        <link rel="stylesheet" href="/static/assets/css/style.css">
+        <!-- Boxiocns CDN Link -->
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+        {% block stylesheets %}{% endblock stylesheets %}
+
+    </head>
+
+<body>
+    {% include 'includes/sidebar.html' %}
+    
+
+    <section class="home">
+        <nav class="navbar">
+            <p class="h3 ps-5 mb-0 text-primary">
+                {% block titulopagina %}{% endblock %}
+            </p>
+    </nav>
+    <hr class="m-4 mt-0 mb-0 text">
+    {% block content %}
+
+    {% endblock content %}
+    </section>
+    
+    {% include 'includes/scripts.html' %}
+        
+
+    {% block javascripts %}
+    {% endblock javascripts %}
+
+</body>
+</html>

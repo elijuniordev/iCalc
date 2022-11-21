@@ -1,0 +1,53 @@
+<nav class="sidebar close">
+    <header>
+       <div class="image-text">
+          <span class="image">
+            <span class="image">
+                <img src="/static/assets/images/logo.png" alt="">
+            </span>
+          </span>
+          <div class="text logo-text">
+             <span class="name">iCalc</span>
+          </div>
+       </div>
+       <i class='bx bx-chevron-right toggle'></i>
+    </header>
+    <div class="menu-bar">
+       <div class="menu">
+          <ul class="menu-links">
+             <li class="nav-link">
+                <a href="{{ url_for('index') }}">
+                <i class='bx bx-home-alt icon' ></i>
+                <span class="text nav-text">Home</span>
+                </a>
+             </li>
+             <li class="nav-link">
+                <a href="{{ url_for('calculadorasalario') }}">
+                <i class='bx bxs-calculator icon' ></i>
+                <span class="text nav-text">Salário Completo</span>
+                </a>
+             </li>
+             <li class="nav-link">
+                <a href="#">
+                <i class='bx bx-dollar icon'></i>
+                <span class="text nav-text">Hora Extra</span>
+                </a>
+             </li>
+             <li class="nav-link">
+                <a href="#">
+                  <i class='bx bxs-wallet icon'></i>
+                <span class="text nav-text">Férias</span>
+                </a>
+             </li>
+          </ul>
+       </div>
+       <div class="bottom-content">
+          <li class="">
+             <a href="#">
+             <i class='bx bx-book icon'></i>
+             <span class="text nav-text">Documentações</span>
+             </a>
+          </li>
+       </div>
+    </div>
+ </nav>
