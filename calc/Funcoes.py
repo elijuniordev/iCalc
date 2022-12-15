@@ -161,6 +161,14 @@ class HE:
         self.qtdehenormal = qtdehenormal
         self.qtdehecem = qtdehecem
         
+    def HE_unit_util(self):
+        valorheunitutil = float(self.valor_hora_util * (self.porchenormal + 1 ))
+        return valorheunitutil
+    
+    def HE_unit_cem(self):
+        valorheunitcem = float(self.valor_hora_util * (self.porchecem + 1 ))
+        return valorheunitcem
+    
     def HE_util(self):
         valorheutil = float(self.valor_hora_util * (self.porchenormal + 1 )) * self.qtdehenormal
         return valorheutil

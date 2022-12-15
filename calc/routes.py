@@ -15,9 +15,50 @@ def formatacaomoeda(valor):
 def index():
     return render_template('index.html', segment='index')
 
-@app.route('/teste')
-def teste():
-    return render_template('teste.html', segment='teste')
+@app.route('/horaextra', methods=['GET', 'POST'])
+def horaextra():
+    if request.method == "POST":
+            # Inputs de formulário do Usuário
+            salario_digitado = Funcoes.Valor(request.form['salario_digitado']).tratar()
+            hrmensais = int(request.form['hrmensais'])
+            qtdehenormal = Funcoes.Hora(request.form['qtdehenormal']).transformacao()
+            porchenormal = float(request.form['porchenormal'])
+            qtdehecem = Funcoes.Hora(request.form['qtdehecem']).transformacao()
+            porchecem = float(request.form['porchecem'])
+            dias_uteis = int(request.form['dias_uteis'])
+            dom_fer = int(request.form['dom_fer'])
+            # Fim dos Inputs
+            # Chamada de funções para cálculos
+            valor_hora_util = Funcoes.ValorHora(salario_digitado, hrmensais).calcular_valor_hora()
+            valorheunitutil = Funcoes.HE(salario_digitado, valor_hora_util, porchenormal, porchecem, qtdehenormal, qtdehecem).HE_unit_util()
+            valorheunitcem = Funcoes.HE(salario_digitado, valor_hora_util, porchenormal, porchecem, qtdehenormal, qtdehecem).HE_unit_cem()
+            valorheutil = Funcoes.HE(salario_digitado, valor_hora_util, porchenormal, porchecem, qtdehenormal, qtdehecem).HE_util()
+            valorhecem = Funcoes.HE(salario_digitado, valor_hora_util, porchenormal, porchecem, qtdehenormal, qtdehecem).HE_cem()
+            valordsrutil = Funcoes.DSR(valorheutil, valorhecem, dias_uteis, dom_fer).DSR_util()
+            valordsrcem = Funcoes.DSR(valorheutil, valorhecem, dias_uteis, dom_fer).DSR_cem()
+
+            # Fim da chamada de funções
+            return render_template('resultadohe.html',
+                                    salario_digitado = salario_digitado,
+                                    valorheunitutil = valorheunitutil,
+                                    valorheunitcem = valorheunitcem,
+                                    valorheutil = valorheutil,
+                                    valorhecem = valorhecem,
+                                    valordsrutil = valordsrutil,
+                                    valordsrcem = valordsrcem,  
+                                    segment='resultadohe'                             
+                                )
+    else:
+        return render_template('horaextra.html', segment='horaextra')
+    
+
+@app.route('/documentacao')
+def documentacao():
+    return render_template('documentacao.html', segment='documentacao')
+
+@app.route('/ferias')
+def ferias():
+    return render_template('ferias.html', segment='ferias')
     
 @app.route('/calculadorasalario', methods=['GET', 'POST'])
 def calculadorasalario():
