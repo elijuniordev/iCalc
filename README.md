@@ -9,5 +9,4 @@ Através de formulário preenchido pelo usuário trás o resultado do respectivo
 ## Badges
 
 <img src="https://img.shields.io/badge/python-3.10.7-blue" />
-
 <img src="https://img.shields.io/badge/flask-2.2.2-red" />
