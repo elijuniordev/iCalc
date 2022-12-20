@@ -13,3 +13,5 @@ Através de formulário preenchido pelo usuário trás o resultado do respectivo
 ## Links
 
 <a href="https://github.com/elijuniordev/iCalc"><img src="https://badgen.net/badge/icon/github?icon=github&label" /></a>
+
+<a href="https://icalc.herokuapp.com/"><img src="https://badgen.net/badge/icon/chrome?icon=chrome&label" /></a>
