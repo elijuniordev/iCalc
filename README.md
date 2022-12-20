@@ -12,4 +12,4 @@ Através de formulário preenchido pelo usuário trás o resultado do respectivo
 
 ## Links
 
-<a href="https://github.com/elijuniordev/iCalc"><img src="https://badgen.net/badge/icon/github?=github&github" /></a>
+<a href="https://github.com/elijuniordev/iCalc"><img src="https://badgen.net/badge/icon/github?icon=github&label" /></a>
