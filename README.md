@@ -12,6 +12,6 @@ Através de formulário preenchido pelo usuário trás o resultado do respectivo
 
 ## Links
 
-<a href="https://github.com/elijuniordev/iCalc"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=whitel" />Code</a> 
+<a href="https://github.com/elijuniordev/iCalc"><img src="![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)" /></a> 
 
-<a href="https://icalc.herokuapp.com/"><img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white" />Ao vivo</a>
+<a href="https://icalc.herokuapp.com/"><img src="![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)" /></a>
