@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block title %} Documentação {% endblock %} 
-{% block titulopagina %} Documentação dos cálculos {% endblock %}
+{% block titulopagina %} Documentação do sistema {% endblock %}
 
 <!-- Specific CSS goes HERE -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -9,7 +9,14 @@
 {% block content %}
     
     <div class="container mt-3 text">
-        <p class="text-center">Bem vindos a página de documentação</p>
+            <details class="mt-4">
+                <summary class="h5">Como é calculado a hora extra?</summary>
+                <p class="">Texto de exemplo</p>
+            </details>
+            <details class="">
+                <summary class="h5">Como é calculado o DSR?</summary>
+                <p class="">Texto de exemplo</p>
+            </details>
     </div>
 
 {% endblock content %}

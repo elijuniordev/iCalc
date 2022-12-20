@@ -111,13 +111,19 @@
                     <td>{{ somainss|formatacaomoeda }}</td>
                   </tr>
 
+                  {% if irrf == 0 %}
+                  <tr>
+                    <th>O desconto da faixa 1 do IRRF</th>
+                    <td>{{ irrf|formatacaomoeda }}</td>
+                  </tr>
+                  {% else %}
                   {% for faixa, valor in irrf.items() %}
-                    <tr>
-                      <th>O desconto da faixa {{ faixa }} do IRRF</th>
-                      <td>{{ valor|formatacaomoeda }}</td>
-                    </tr>
-                  {% endfor %}
-
+                  <tr>
+                    <th>O desconto da faixa {{ faixa }} do IRRF</th>
+                    <td>{{ valor|formatacaomoeda }}</td>
+                  </tr>
+                {% endfor %}
+                  {% endif %}
                   <tr>
                     <th scope="row">Total de desconto do IRRF</th>
                     <td>{{ somairrf|formatacaomoeda }}</td>

@@ -4,14 +4,75 @@
 {% block titulopagina %} Cálculo de férias {% endblock %}
 
 <!-- Specific CSS goes HERE -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" 
+    integrity="sha512-Rdk63VC+1UYzGSgd3u2iadi0joUrcwX0IWp2rTh6KXFoAmgOjRS99Vynz1lJPT8dLjvo6JZOqpAHJyfCEZ5KoA==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer">
+</script>
+
+{% endblock stylesheets %}
 
 {% block content %}
     
+<form role="form" method="POST" action="{{ url_for('ferias') }}">
     <div class="container mt-3 text">
-        <p class="text-center">Bem vindos a página de férias</p>
-    </div>
+        <p class="">Digite os valores abaixo para realizar o cálculo</p>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control moeda" value="R$ 0,00" name="salario_digitado" id="salario_digitado" value="{{ salario_digitado }}" required>
+                    <label for="salario_digitado">Salário</label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control moeda" value="R$ 0,00" name="media_proventos" id="media_proventos" value="{{ media_proventos }}" required>
+                    <label for="media_proventos">Valor médio de outros proventos</label>
+                </div>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" name="qtde_dependentes" value="0" id="qtde_dependentes" value="{{ qtde_dependentes }}" min="0" required>
+                    <label for="qtde_dependentes">Quantidade de dependentes</label>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control moeda" value="R$ 0,00" name="pensao" id="pensao" value="{{ pensao }}" required>
+                    <label for="pensao">Valor do desconto de pensão alimentícia</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mt-3 mb-5" align="center">
+                <button type="submit" class="btn btn-primary">Calcular</button>
+                <button class="btn btn-outline-secondary" type="reset">Limpar</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+
+<script>
+jQuery(function() {
+            
+jQuery(".moeda").maskMoney({
+    prefix:'R$ ', 
+    thousands:'.', 
+    decimal:',',
+    allowZero: true,
+})
+});
+</script>
 {% endblock content %}
 
 {% block javascripts %}

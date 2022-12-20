@@ -17,7 +17,8 @@ class Valor():
         self.valor = valor
         
     def tratar(self):
-        valor_tratado = self.valor.replace('R$ ','')
+        valor_tratado = self.valor.replace('R$','')
+        valor_tratado = valor_tratado.replace(' ','')
         valor_tratado = valor_tratado.replace('.','')
         valor_tratado = valor_tratado.replace(',','.')
         return float(valor_tratado)
@@ -277,10 +278,10 @@ class SalarioBruto:
         return salario_bruto
         
 class SalarioLiquido:
-    def __init__(self, salario_bruto, irrf, inss, desconto_vt, desconto_vr, pensao):
+    def __init__(self, salario_bruto, somairrf, somainss, desconto_vt, desconto_vr, pensao):
         self.salario_bruto = salario_bruto
-        self.irrf = sum(irrf)
-        self.inss = sum(inss)
+        self.irrf = somairrf
+        self.inss = somainss
         self.desconto_vt = desconto_vt
         self.desconto_vr = desconto_vr
         self.pensao = pensao
@@ -289,5 +290,38 @@ class SalarioLiquido:
         salario_liquido = self.salario_bruto - self.irrf - self.inss - self.desconto_vt - self.desconto_vr - self.pensao
         return salario_liquido
     
+    
 
-# valor_a_receber = salario_bruto - sum(desconto_irrf) - desconto_inss - descontovt - pensao
+
+class TercoFerias:
+    def __init__(self, salario, media_proventos):
+        self.salario = salario
+        self.media_proventos = media_proventos
+        
+    def terco_ferias(self):
+        terco_ferias = (self.salario + self.media_proventos) / 3
+        return terco_ferias
+
+
+class BaseFerias:
+    def __init__(self, salario, media_proventos, terco_ferias):
+        self.salario = salario
+        self.media_proventos = media_proventos
+        self.terco_ferias = terco_ferias
+        
+    def base_ferias(self):
+        base_ferias = (self.salario + self.media_proventos + self.  terco_ferias)
+        return base_ferias
+
+class ValorFerias:
+    def __init__(self, base_ferias, inss, irrf):
+        self.base_ferias = base_ferias
+        self.inss = inss
+        self.irrf = irrf
+    
+    def valor_ferias(self):
+        irrf = self.irrf
+        inss = self.inss
+        valor_ferias = self.base_ferias - inss - irrf
+        return valor_ferias
+    

@@ -351,10 +351,7 @@ ol, ul {
 }
 
 
-.fa-moon {
-	color: #f1c40f;
-}
-
-.fa-sun {
-	color: #f39c12;
+.paragrafo {
+    padding-top: 0.5rem;
+    padding-left: 1.6rem;
 }

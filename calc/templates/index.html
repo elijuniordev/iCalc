@@ -4,15 +4,90 @@
 {% block titulopagina %} Home {% endblock %}
 
 <!-- Specific CSS goes HERE -->
-{% block stylesheets %}{% endblock stylesheets %}
+{% block stylesheets %}
+
+<link rel="stylesheet" href="/static/assets/css/carousel.css">
+<link rel="stylesheet" href="/static/assets/css/social.css">
+
+{% endblock stylesheets %}
 
 {% block content %}
     
-    <div class="container mt-3 text">
-        <p class="text-center">Bem vindos a HomePage</p>
+    <div class="container mt-3 mb-4 text">
+    
+      <div id="carouselExampleControls" class="carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          
+          <div class="carousel-item active">
+            <div class="card">
+              <div class="card-header mt-2">
+                <h5 class="card-title">Calculadora de salário</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  Calcule o salário, com hora extra, horas noturnas, DSR, INSS, IRFF e outros valares online.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="{{ url_for('calculadorasalario') }}" class="btn btn-outline-primary">Acessar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="card">
+              <div class="card-header mt-2">
+                <h5 class="card-title">Calculadora de hora extra</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  Descubra o valor da sua hora extra com porcentagens personalizáveis.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="{{ url_for('horaextra') }}" class="btn btn-outline-primary">Acessar</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="card">
+              <div class="card-header mt-2">
+                <h5 class="card-title">Calculadora de férias</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text">
+                  Calcule o valor das suas férias de maneira simples.
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="{{ url_for('ferias') }}" class="btn btn-outline-primary">Acessar</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="text-center mt-5"> 
+          <p>Site desenvolvido com intuito acadêmico, resultados finais podem ter algumas diferenças dos valores reais.</p>
+          <p>Desenvolvido por EliJunior.DEV</p>
+        <ul class="social-icons">
+          <li><a href="https://www.instagram.com/elijunior.dev/"><i class="fa fa-instagram"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/juniorsoares99/"><i class="fa fa-linkedin"></i></a></li>
+          <li><a href="https://github.com/elijuniordev"><i class="fa fa-github"></i></a></li>
+        </ul>
+      </div>
+    
     </div>
+
+    
+
+
+
 
 {% endblock content %}
 
 {% block javascripts %}
+<script src="/static/assets/js/carrossel.js"></script>
 {% endblock javascripts %}

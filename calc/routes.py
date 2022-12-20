@@ -56,9 +56,35 @@ def horaextra():
 def documentacao():
     return render_template('documentacao.html', segment='documentacao')
 
-@app.route('/ferias')
+@app.route('/ferias', methods=['GET', 'POST'])
 def ferias():
-    return render_template('ferias.html', segment='ferias')
+    if request.method == "POST":
+        # Inputs
+        salario_digitado = Funcoes.Valor(request.form['salario_digitado']).tratar()
+        qtde_dependentes = int(request.form['qtde_dependentes'])
+        media_proventos = Funcoes.Valor(request.form['media_proventos']).tratar()
+        pensao = Funcoes.Valor(request.form['pensao']).tratar()
+        
+        
+        # Chamada funções
+        terco_ferias = Funcoes.TercoFerias(salario_digitado, media_proventos).terco_ferias()
+        base_ferias = Funcoes.BaseFerias(salario_digitado, media_proventos, terco_ferias).base_ferias()
+        inss = Funcoes.INSS(salario_digitado).calcular_inss()
+        irrf = Funcoes.IRRF(base_ferias, inss, qtde_dependentes, pensao).calcular_irrf()
+        valor_inss = sum(inss.values())
+        valor_irrf = sum(irrf.values())
+        valor_ferias = Funcoes.ValorFerias(base_ferias, valor_inss, valor_irrf).valor_ferias()
+        # Fim da chamada de funções
+        return render_template('resultadoferias.html',
+                                    salario_digitado = salario_digitado,
+                                    terco_ferias = terco_ferias,
+                                    valor_ferias = valor_ferias,
+                                    valor_inss = valor_inss,
+                                    valor_irrf = valor_irrf, 
+                                    segment='resultadoferias'                             
+                                )
+    else:  
+        return render_template('ferias.html', segment='ferias')
     
 @app.route('/calculadorasalario', methods=['GET', 'POST'])
 def calculadorasalario():
@@ -95,8 +121,13 @@ def calculadorasalario():
             valor_dsr_noturno_cem = Funcoes.DsrHoraNoturnaExtraCem(valor_hn_extra_cem, dias_uteis, dom_fer).Dsr_hn_extracem()
             desconto_vt = Funcoes.ValeTransporte(salario_digitado, recebe_vt).calculo_vt()
             inss = Funcoes.INSS(salario_digitado).calcular_inss()
+            somainss = sum(inss.values())
             irrf = Funcoes.IRRF(valor_salario_bruto, inss, qtde_dependentes, pensao).calcular_irrf()
-            salario_liquido = Funcoes.SalarioLiquido(valor_salario_bruto, irrf, inss, desconto_vt, desconto_vr, pensao).calculo_salario_liquido()
+            if irrf == 0:
+                somairrf = 0
+            else:
+                somairrf = sum(irrf.values())
+            salario_liquido = Funcoes.SalarioLiquido(valor_salario_bruto, somairrf, somainss, desconto_vt, desconto_vr, pensao).calculo_salario_liquido()
             # Fim da chamada de funções
             return render_template('resultado.html',
                                     salario_digitado = salario_digitado,
@@ -111,9 +142,9 @@ def calculadorasalario():
                                     valor_dsr_noturno_cem = valor_dsr_noturno_cem,
                                     valor_salario_bruto = valor_salario_bruto,
                                     inss = inss,
-                                    somainss = sum(inss.values()),
+                                    somainss = somainss,
                                     irrf = irrf,
-                                    somairrf = sum(irrf.values()),
+                                    somairrf = somairrf,
                                     desconto_vr = desconto_vr,
                                     desconto_vt = desconto_vt,
                                     salario_liquido = salario_liquido,  

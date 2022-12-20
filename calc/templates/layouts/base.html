@@ -27,11 +27,13 @@
 
     <section class="home">
         <nav class="navbar">
-            <p class="h3 ps-5 mb-0 text-primary">
+            <p class="h3 ps-5 mb-0 mt-2 text-primary">
                 {% block titulopagina %}{% endblock %}
             </p>
     </nav>
     <hr class="m-4 mt-0 mb-0 text">
+    
+    
     {% block content %}
 
     {% endblock content %}
@@ -39,6 +41,7 @@
     
     {% include 'includes/scripts.html' %}
         
+
 
     {% block javascripts %}
     {% endblock javascripts %}
